@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: person-destination
+spec:
+  host: person
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: person-virtualservice
+spec:
+  hosts:
+    - person
+  http:
+    - route:
+      - destination:
+          host: person
+          subset: v1
+        weight: 100
+      - destination:
+          host: person
+          subset: v2
+        weight: 0

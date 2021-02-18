@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: liquibase-changelog-v2
+data:
+  changelog.sql: |-
+    --liquibase formatted sql
+
+    --changeset piomin:2
+    alter table rename column firstName to first_name;
+    alter table rename column lastName to last_name;

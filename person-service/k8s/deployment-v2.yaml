@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: person-v2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: person
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: person
+        version: v2
+    spec:
+      containers:
+      - name: person
+        image: piomin/person-service
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DATABASE_USER
+            valueFrom:
+              configMapKeyRef:
+                key: POSTGRES_USER
+                name: postgres-config
+          - name: DATABASE_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: POSTGRES_DB
+                name: postgres-config
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_PASSWORD
+                name: postgres-secret
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/liveness
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/readiness

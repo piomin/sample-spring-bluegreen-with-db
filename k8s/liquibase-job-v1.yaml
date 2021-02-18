@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: liquibase-job-v1
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: liquibase
+          image: piomin/liquibase
+          env:
+            - name: URL
+              value: jdbc:postgresql://postgres:5432/bluegreen
+            - name: USERNAME
+              value: bluegreen
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: postgres-secret
+            - name: CHANGELOGFILE
+              value: changelog.sql
+          volumeMounts:
+            - name: config-vol
+              mountPath: /liquibase/changelog
+      restartPolicy: Never
+      volumes:
+        - name: config-vol
+          configMap:
+            name: liquibase-changelog-v1

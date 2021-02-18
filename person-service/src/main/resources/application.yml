@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: person-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+      group:
+        readiness:
+          include: db
+      probes:
+        enabled: true
