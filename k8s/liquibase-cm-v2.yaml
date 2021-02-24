@@ -7,5 +7,5 @@ data:
     --liquibase formatted sql
 
     --changeset piomin:2
-    alter table rename column firstName to first_name;
-    alter table rename column lastName to last_name;
+    alter table person rename column firstName to first_name;
+    alter table person rename column lastName to last_name;
