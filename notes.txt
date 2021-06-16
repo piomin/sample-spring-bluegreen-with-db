@@ -1,0 +1,29 @@
+all minikube and kubectl in cmd admin
+
+minikube start
+minikube dashboard (new cmd)
+
+postgres
+
+
+kubectl delete -f postgresql-deployment.yaml (if exists)
+kubectl create -f postgresql-deployment.yaml 
+
+
+liquibase container
+
+
+docker build -t piomin/liquibase .
+
+
+liquibase config maps and jobs
+
+(config map is the changelog)
+kubectl delete -f liquibase-cm-v1.yaml (if exists)
+kubectl create -f liquibase-cm-v1.yaml
+
+
+(job runs liquibase with the config map)
+
+kubectl delete -f liquibase-job-v1.yaml (if exists)
+kubectl create -f liquibase-job-v1.yaml
