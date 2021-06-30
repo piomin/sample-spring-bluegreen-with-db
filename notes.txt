@@ -1,7 +1,18 @@
-all minikube and kubectl in cmd admin
 
+
+For Windows, all minikube and kubectl commands should be run in an Administrator CMD shell.
+
+(doskey k=kubectl $*)
+
+
+minikube config set driver hyperv (Windows only. Had bad luck with new default of Docker)
 minikube start
 minikube dashboard (new cmd)
+
+install Istio
+
+istioctl install (https://istio.io/latest/docs/setup/install/istioctl/)
+
 
 postgres
 
@@ -13,8 +24,8 @@ kubectl create -f postgresql-deployment.yaml
 liquibase container
 
 
-docker build -t piomin/liquibase .
-
+docker build -t liquibase/bg-k8s-liquibase .
+docker push liquibase/bg-k8s-liquibase
 
 liquibase config maps and jobs
 

@@ -10,14 +10,17 @@ spec:
     spec:
       containers:
         - name: liquibase
-          image: piomin/liquibase
+          image: liquibase/bg-k8s-liquibase
           env:
             - name: URL
               value: jdbc:postgresql://postgres:5432/bluegreen
             - name: USERNAME
               value: bluegreen
             - name: PASSWORD
-              value: bluegreen
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: postgres-secret
             - name: CHANGELOGFILE
               value: changelog.sql
           volumeMounts:

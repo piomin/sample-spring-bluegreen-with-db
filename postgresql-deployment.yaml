@@ -7,7 +7,7 @@ metadata:
 data:
   POSTGRES_DB: bluegreen
   POSTGRES_USER: bluegreen
-  POSTGRES_HOST: postgres
+  POSTGRES_HOST: postgresql
 ---
 apiVersion: v1
 kind: Secret
@@ -16,7 +16,7 @@ metadata:
   labels:
     app: postgres
 data:
-  POSTGRES_PASSWORD: Ymx1ZWdyZWVu
+  POSTGRES_PASSWORD: YWRtaW4xMjM=
 ---
 kind: PersistentVolume
 apiVersion: v1
