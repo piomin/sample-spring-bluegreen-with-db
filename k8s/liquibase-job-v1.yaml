@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
         - name: liquibase
-          image: piomin/liquibase
+          image: liquibase/bg-k8s-liquibase
           env:
             - name: URL
               value: jdbc:postgresql://postgres:5432/bluegreen
