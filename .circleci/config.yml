@@ -1,5 +1,15 @@
 version: 2.1
 
+jobs:
+  analyze:
+    docker:
+      - image: 'cimg/openjdk:19.0'
+    steps:
+      - checkout
+      - run:
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar -DskipTests
+
 executors:
   jdk:
     docker:
@@ -17,3 +27,5 @@ workflows:
           context: Testcontainers
           pre-steps:
             - tcc/setup
+      - analyze:
+          context: SonarCloud

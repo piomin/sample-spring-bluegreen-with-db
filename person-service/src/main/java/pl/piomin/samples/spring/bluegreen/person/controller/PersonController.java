@@ -27,7 +27,7 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<Person> findAll() {
-        return (List<Person>) repository.findAll();
+    public Iterable<Person> findAll() {
+        return repository.findAll();
     }
 }

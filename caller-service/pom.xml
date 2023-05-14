@@ -12,11 +12,9 @@
     </parent>
     <artifactId>caller-service</artifactId>
 
-<!--    <properties>-->
-<!--        <maven.compiler.source>11</maven.compiler.source>-->
-<!--        <maven.compiler.target>11</maven.compiler.target>-->
-<!--        <java.version>11</java.version>-->
-<!--    </properties>-->
+    <properties>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+    </properties>
 
     <dependencies>
         <dependency>
