@@ -64,8 +64,8 @@ public class PersonControllerTests {
         assertEquals(id, updated.getId());
     }
 
-//    @Test
-//    @Order(3)
+    @Test
+    @Order(3)
     void getAll() {
         Person[] persons = restTemplate.getForObject("/persons", Person[].class);
         assertEquals(1, persons.length);

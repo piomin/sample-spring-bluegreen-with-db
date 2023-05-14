@@ -21,6 +21,11 @@ public class PersonController {
         return repository.save(person);
     }
 
+    @PutMapping
+    public Person update(@RequestBody Person person) {
+        return repository.save(person);
+    }
+
     @GetMapping("/{id}")
     public Person findById(@PathVariable("id") Long id) {
         return repository.findById(id).orElse(null);
