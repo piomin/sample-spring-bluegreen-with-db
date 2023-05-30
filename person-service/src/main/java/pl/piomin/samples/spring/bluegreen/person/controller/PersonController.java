@@ -16,12 +16,12 @@ public class PersonController {
         this.repository = repository;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Person add(@RequestBody Person person) {
         return repository.save(person);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Person update(@RequestBody Person person) {
         return repository.save(person);
     }
