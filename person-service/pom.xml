@@ -13,7 +13,7 @@
 
     <properties>
         <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
-        <testcontainers.version>1.19.5</testcontainers.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
     </properties>
 
     <dependencies>
