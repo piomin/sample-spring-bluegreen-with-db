@@ -7,11 +7,10 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.resttestclient.TestRestTemplate;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureTestRestTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -24,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
    properties = {"spring.jpa.hibernate.ddl-auto=create", "spring.jpa.show-sql=true"})
 @Testcontainers
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@AutoConfigureTestRestTemplate
 public class PersonControllerTests {
 
     @Autowired

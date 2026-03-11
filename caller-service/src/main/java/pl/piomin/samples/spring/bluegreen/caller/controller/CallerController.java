@@ -23,6 +23,6 @@ public class CallerController {
         if (response.getStatusCode().is2xxSuccessful())
             return response.getBody();
         else
-            return "Error: HTTP " + response.getStatusCodeValue();
+            return "Error: HTTP " + response.getStatusCode().value();
     }
 }
